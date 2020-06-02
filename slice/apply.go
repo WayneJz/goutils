@@ -11,35 +11,35 @@ package slice
 	Expected out: [0, 14, 16]
 */
 
-// Apply a function to each element in string slice
+// ApplyStrings ... Apply a function to each element in string slice
 func ApplyStrings(l []string, applyFunc func(n string) string) {
 	for i, s := range l {
 		l[i] = applyFunc(s)
 	}
 }
 
-// Apply a function to each element in int64 slice
+// ApplyInt64s ... Apply a function to each element in int64 slice
 func ApplyInt64s(l []int64, applyFunc func(n int64) int64) {
 	for i, num := range l {
 		l[i] = applyFunc(num)
 	}
 }
 
-// Apply a function to each element in int32 slice
+// ApplyInt32s ... Apply a function to each element in int32 slice
 func ApplyInt32s(l []int32, applyFunc func(n int32) int32) {
 	for i, num := range l {
 		l[i] = applyFunc(num)
 	}
 }
 
-// Apply a function to each element in uint64 slice
+// ApplyUint64s ... Apply a function to each element in uint64 slice
 func ApplyUint64s(l []uint64, applyFunc func(n uint64) uint64) {
 	for i, num := range l {
 		l[i] = applyFunc(num)
 	}
 }
 
-// Apply a function to each element in uint32 slice
+// ApplyUint32s ... Apply a function to each element in uint32 slice
 func ApplyUint32s(l []uint32, applyFunc func(n uint32) uint32) {
 	for i, num := range l {
 		l[i] = applyFunc(num)
@@ -62,35 +62,35 @@ func ApplyUint32s(l []uint32, applyFunc func(n uint32) uint32) {
 	Expected out: [0, 7, 16]
 */
 
-// Apply a index function to each element in string slice
+// IApplyStrings ... Apply an index-related function to each element in string slice
 func IApplyStrings(l []string, applyFunc func(i int, n string) string) {
 	for i, s := range l {
 		l[i] = applyFunc(i, s)
 	}
 }
 
-// Apply a index function to each element in int64 slice
+// IApplyInt64s ... Apply an index-related function to each element in int64 slice
 func IApplyInt64s(l []int64, applyFunc func(i int, n int64) int64) {
 	for i, num := range l {
 		l[i] = applyFunc(i, num)
 	}
 }
 
-// Apply a index function to each element in int32 slice
+// IApplyInt32s ... Apply an index-related function to each element in int32 slice
 func IApplyInt32s(l []int32, applyFunc func(i int, n int32) int32) {
 	for i, num := range l {
 		l[i] = applyFunc(i, num)
 	}
 }
 
-// Apply a index function to each element in uint64 slice
+// IApplyUint64s ... Apply an index-related function to each element in uint64 slice
 func IApplyUint64s(l []uint64, applyFunc func(i int, n uint64) uint64) {
 	for i, num := range l {
 		l[i] = applyFunc(i, num)
 	}
 }
 
-// Apply a index function to each element in uint32 slice
+// IApplyUint32s ... Apply an index-related function to each element in uint32 slice
 func IApplyUint32s(l []uint32, applyFunc func(i int, n uint32) uint32) {
 	for i, num := range l {
 		l[i] = applyFunc(i, num)

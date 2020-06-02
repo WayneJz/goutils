@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/waynejz/goutils/errors"
 	"github.com/jinzhu/gorm"
+	"github.com/waynejz/goutils/errors"
 )
 
-// Gorm execution object, DB must not have instant-execute method,
+// ExecObject ... Gorm execution object, DB must not have instant-execute method,
 // Entity should be an addressable value, just as gorm required
 type ExecObject struct {
 	DB     *gorm.DB
@@ -16,7 +16,7 @@ type ExecObject struct {
 	Method string
 }
 
-// Concurrently perform database manipulation, with timeout killed
+// MultiExec ... Concurrently perform database manipulation, with timeout killed
 func MultiExec(timeout time.Duration, obj ...ExecObject) error {
 	multiErr := new(errors.MultiError)
 	doneChannel := make(chan int, len(obj))
@@ -24,7 +24,7 @@ func MultiExec(timeout time.Duration, obj ...ExecObject) error {
 	for i := range obj {
 		go func(index int) {
 			if err := gormExec(obj[index].DB, obj[index].Entity, obj[index].Method); err != nil {
-				multiErrs.Add(err)
+				multiErr.Add(err)
 			}
 			doneChannel <- index
 		}(i)
@@ -68,6 +68,6 @@ func gormExec(db *gorm.DB, entity interface{}, method string) error {
 	case "delete", "Delete":
 		return db.Delete(entity).Error
 	default:
-		return fmt.Errorf("gormExec: unsupported method %v", method)
+		return fmt.Errorf("gorm exec: unsupported method %v", method)
 	}
 }

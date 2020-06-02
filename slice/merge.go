@@ -1,6 +1,6 @@
 package slice
 
-// Merge string slices into one string slice
+// MergeStrings ... Merge string slices into one string slice
 func MergeStrings(l ...[]string) []string {
 	var res []string
 	for _, s := range l {
@@ -11,7 +11,7 @@ func MergeStrings(l ...[]string) []string {
 	return res
 }
 
-// Merge string slices into one string slice, excluding duplicated strings
+// UniqueMergeStrings ... Merge string slices into one string slice, excluding duplicated strings
 func UniqueMergeStrings(l ...[]string) []string {
 	var res []string
 	checkMap := make(map[string]int8)
@@ -27,7 +27,7 @@ func UniqueMergeStrings(l ...[]string) []string {
 	return res
 }
 
-// Merge int64 slices into one int64 slice
+// MergeInt64s ... Merge int64 slices into one int64 slice
 func MergeInt64s(l ...[]int64) []int64 {
 	var res []int64
 	for _, n := range l {

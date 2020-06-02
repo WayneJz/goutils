@@ -1,4 +1,4 @@
-package orms
+package errors
 
 import (
 	"fmt"
