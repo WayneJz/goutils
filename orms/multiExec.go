@@ -2,22 +2,23 @@ package orms
 
 import (
 	"fmt"
-	"github.com/jinzhu/gorm"
 	"time"
+
+	"github.com/waynejz/goutils/errors"
+	"github.com/jinzhu/gorm"
 )
 
 // Gorm execution object, DB must not have instant-execute method,
 // Entity should be an addressable value, just as gorm required
 type ExecObject struct {
-	DB      *gorm.DB
-	Entity  interface{}
-	Method  string
-	Timeout time.Duration
+	DB     *gorm.DB
+	Entity interface{}
+	Method string
 }
 
 // Concurrently perform database manipulation, with timeout killed
-func GormMultiExec(timeout time.Duration, obj ...ExecObject) error {
-	multiErrs := new(GormMultiError)
+func MultiExec(timeout time.Duration, obj ...ExecObject) error {
+	multiErr := new(errors.MultiError)
 	doneChannel := make(chan int, len(obj))
 
 	for i := range obj {
@@ -36,21 +37,17 @@ func GormMultiExec(timeout time.Duration, obj ...ExecObject) error {
 	for {
 		select {
 		case <-doneChannel:
-			{
-				receivedDone++
-				if receivedDone == len(obj) {
-					close(doneChannel)
-					return multiErrs.Return()
-				}
+			receivedDone++
+			if receivedDone == len(obj) {
+				close(doneChannel)
+				return multiErr.Return()
 			}
 		case <-timer.C:
-			{
-				close(doneChannel)
-				if receivedDone != len(obj) {
-					multiErrs.Add(fmt.Errorf("gormMultiExec: timeout killed. timeout=%v", timeout))
-				}
-				return multiErrs.Return()
+			close(doneChannel)
+			if receivedDone != len(obj) {
+				multiErr.Add(fmt.Errorf("orm multi execution: timeout %v exceeded, killed", timeout))
 			}
+			return multiErr.Return()
 		}
 	}
 }
@@ -59,29 +56,17 @@ func GormMultiExec(timeout time.Duration, obj ...ExecObject) error {
 func gormExec(db *gorm.DB, entity interface{}, method string) error {
 	switch method {
 	case "create", "Create":
-		{
-			return db.Create(entity).Error
-		}
+		return db.Create(entity).Error
 	case "find", "Find":
-		{
-			return db.Find(entity).Error
-		}
+		return db.Find(entity).Error
 	case "first", "First":
-		{
-			return db.First(entity).Error
-		}
+		return db.First(entity).Error
 	case "save", "Save":
-		{
-			return db.Save(entity).Error
-		}
+		return db.Save(entity).Error
 	case "update", "Update":
-		{
-			return db.Update(entity).Error
-		}
+		return db.Update(entity).Error
 	case "delete", "Delete":
-		{
-			return db.Delete(entity).Error
-		}
+		return db.Delete(entity).Error
 	default:
 		return fmt.Errorf("gormExec: unsupported method %v", method)
 	}
