@@ -20,7 +20,7 @@ type ExecObject struct {
 	Method string
 }
 
-// MultiExec ... Concurrently perform database manipulation, with timeout killed
+// Executes ... Concurrently perform multiple database manipulation, with timeout-killed option
 func Executes(timeout time.Duration, obj ...ExecObject) error {
 	errs := new(errors.Errors)
 	doneChannel := make(chan int, len(obj))
@@ -50,7 +50,7 @@ func Executes(timeout time.Duration, obj ...ExecObject) error {
 		case <-timer.C:
 			close(doneChannel)
 			if receivedDone != len(obj) {
-				errs.Add(fmt.Errorf("orm multi execution: timeout %v exceeded, killed", timeout))
+				errs.Add(fmt.Errorf("executes: timeout %v exceeded, killed", timeout))
 			}
 			return errs.Return()
 		}
@@ -60,7 +60,7 @@ func Executes(timeout time.Duration, obj ...ExecObject) error {
 // exec ... Execute gorm method, now supports for create, find, first, save, update, delete
 func exec(db *gorm.DB, entity interface{}, where []interface{}, method string) error {
 	if db == nil || entity == nil {
-		return fmt.Errorf("gorm exec: passing nil database pointer or nil entity")
+		return fmt.Errorf("exec: passing nil database pointer or nil entity")
 	}
 	switch method {
 	case "create", "Create":
@@ -76,6 +76,6 @@ func exec(db *gorm.DB, entity interface{}, where []interface{}, method string) e
 	case "delete", "Delete":
 		return db.Delete(entity, where...).Error
 	default:
-		return fmt.Errorf("gorm exec: unsupported method %v", method)
+		return fmt.Errorf("exec: unsupported method %v", method)
 	}
 }
