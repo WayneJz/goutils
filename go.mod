@@ -1,4 +1,4 @@
-module github.com/waynejz/goutils
+module github.com/WayneJz/goutils
 
 go 1.14
 

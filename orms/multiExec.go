@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/WayneJz/goutils/errors"
 	"github.com/jinzhu/gorm"
-	"github.com/waynejz/goutils/errors"
 )
 
 // ExecObject ... Gorm execution object, DB must not have instant-execute method,
