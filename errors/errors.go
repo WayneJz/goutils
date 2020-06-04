@@ -5,32 +5,32 @@ import (
 	"strings"
 )
 
-// MultiError ... Collect multiple errors
-type MultiError struct {
+// Errors ... Collect multiple errors
+type Errors struct {
 	msg []string
 }
 
 // Error ... Implement Error method
-func (g *MultiError) Error() string {
+func (e *Errors) Error() string {
 	builder := new(strings.Builder)
-	for i, v := range g.msg {
-		builder.WriteString(fmt.Sprintf("multi error: sequence=%v, err=%v", i, v))
+	for i, v := range e.msg {
+		builder.WriteString(fmt.Sprintf("errors traceback: sequence=%v, err=%v", i, v))
 	}
 	return builder.String()
 }
 
-// Add ... Add an error to MultiError
-func (g *MultiError) Add(err error) {
+// Add ... Add an error to Errors
+func (e *Errors) Add(err error) {
 	if err == nil {
 		return
 	}
-	g.msg = append(g.msg, err.Error())
+	e.msg = append(e.msg, err.Error())
 }
 
 // Return ... Should be called when return an error outbound
-func (g *MultiError) Return() error {
-	if len(g.msg) == 0 {
+func (e *Errors) Return() error {
+	if len(e.msg) == 0 {
 		return nil
 	}
-	return g
+	return e
 }

@@ -11,7 +11,7 @@ func MergeStrings(l ...[]string) []string {
 	return res
 }
 
-// UniqueMergeStrings ... Merge string slices into one string slice, excluding duplicated strings
+// UniqueMergeStrings ... Merge string slices into one string slice, excluding duplicated elements
 func UniqueMergeStrings(l ...[]string) []string {
 	var res []string
 	checkMap := make(map[string]int8)
@@ -38,7 +38,7 @@ func MergeInt64s(l ...[]int64) []int64 {
 	return res
 }
 
-// Merge int64 slices into one int64 slice, excluding duplicated int64
+// UniqueMergeInt64s ... Merge int64 slices into one int64 slice, excluding duplicated elements
 func UniqueMergeInt64s(l ...[]int64) []int64 {
 	var res []int64
 	checkMap := make(map[int64]int8)
@@ -54,7 +54,7 @@ func UniqueMergeInt64s(l ...[]int64) []int64 {
 	return res
 }
 
-// Merge int32 slices into one int32 slice
+// MergeInt32s ... Merge int32 slices into one int32 slice
 func MergeInt32s(l ...[]int32) []int32 {
 	var res []int32
 	for _, n := range l {
@@ -65,7 +65,7 @@ func MergeInt32s(l ...[]int32) []int32 {
 	return res
 }
 
-// Merge int32 slices into one int32 slice, excluding duplicated int32
+// UniqueMergeInt32s ... Merge int32 slices into one int32 slice, excluding duplicated elements
 func UniqueMergeInt32s(l ...[]int32) []int32 {
 	var res []int32
 	checkMap := make(map[int32]int8)
@@ -81,7 +81,7 @@ func UniqueMergeInt32s(l ...[]int32) []int32 {
 	return res
 }
 
-// Merge uint64 slices into one uint64 slice
+// MergeUint64s ... Merge uint64 slices into one uint64 slice
 func MergeUint64s(l ...[]uint64) []uint64 {
 	var res []uint64
 	for _, n := range l {
@@ -92,7 +92,7 @@ func MergeUint64s(l ...[]uint64) []uint64 {
 	return res
 }
 
-// Merge uint64 slices into one uint64 slice, excluding duplicated uint64
+// UniqueMergeUint64s ... Merge uint64 slices into one uint64 slice, excluding duplicated elements
 func UniqueMergeUint64s(l ...[]uint64) []uint64 {
 	var res []uint64
 	checkMap := make(map[uint64]int8)
@@ -108,7 +108,7 @@ func UniqueMergeUint64s(l ...[]uint64) []uint64 {
 	return res
 }
 
-// Merge uint32 slices into one uint32 slice
+// MergeUint32s ... Merge uint32 slices into one uint32 slice
 func MergeUint32s(l ...[]uint32) []uint32 {
 	var res []uint32
 	for _, n := range l {
@@ -119,7 +119,7 @@ func MergeUint32s(l ...[]uint32) []uint32 {
 	return res
 }
 
-// Merge uint32 slices into one uint32 slice, excluding duplicated uint32
+// UniqueMergeUint32s ... Merge uint32 slices into one uint32 slice, excluding duplicated elements
 func UniqueMergeUint32s(l ...[]uint32) []uint32 {
 	var res []uint32
 	checkMap := make(map[uint32]int8)
