@@ -14,6 +14,9 @@ type Errors struct {
 func (e *Errors) Error() string {
 	builder := new(strings.Builder)
 	for i, v := range e.msg {
+		if i > 0 {
+			builder.WriteRune('\n')
+		}
 		builder.WriteString(fmt.Sprintf("errors traceback: sequence=%v, err=%v", i, v))
 	}
 	return builder.String()

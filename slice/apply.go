@@ -12,7 +12,7 @@ package slice
 */
 
 // ApplyStrings ... Apply a function to each element in string slice
-func ApplyStrings(l []string, applyFunc func(n string) string) {
+func ApplyStrings(l []string, applyFunc func(s string) string) {
 	for i, s := range l {
 		l[i] = applyFunc(s)
 	}
@@ -63,7 +63,7 @@ func ApplyUint32s(l []uint32, applyFunc func(n uint32) uint32) {
 */
 
 // IApplyStrings ... Apply an index-related function to each element in string slice
-func IApplyStrings(l []string, applyFunc func(i int, n string) string) {
+func IApplyStrings(l []string, applyFunc func(i int, s string) string) {
 	for i, s := range l {
 		l[i] = applyFunc(i, s)
 	}
