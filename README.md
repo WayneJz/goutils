@@ -1,7 +1,7 @@
 # goutils [![Build Status](https://travis-ci.org/WayneJz/goutils.svg?branch=master)](https://travis-ci.org/WayneJz/goutils) [![Coverage Status](https://coveralls.io/repos/github/WayneJz/goutils/badge.svg?branch=master)](https://coveralls.io/github/WayneJz/goutils?branch=master)
 Utility Code for Golang, for better map, slice manipulation and condition handling
 
-Require Go 1.11 or newer
+Require Go 1.13 or newer
 
 ## maps
 
