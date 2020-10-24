@@ -52,7 +52,7 @@ func InInt64s(l []int64, nums ...int64) bool {
 	return true
 }
 
-// OneInInt64 ... Check if at least one int64 num in int64 slice
+// OneInInt64s ... Check if at least one int64 num in int64 slice
 func OneInInt64s(l []int64, nums ...int64) bool {
 	checkMap := make(map[int64]int8)
 	for _, n := range nums {
@@ -85,7 +85,7 @@ func InInt32s(l []int32, nums ...int32) bool {
 	return true
 }
 
-// OneInInt32 ... Check if at least one int32 num in int32 slice
+// OneInInt32s ... Check if at least one int32 num in int32 slice
 func OneInInt32s(l []int32, nums ...int32) bool {
 	checkMap := make(map[int32]int8)
 	for _, n := range nums {
@@ -118,7 +118,7 @@ func InUint64s(l []uint64, nums ...uint64) bool {
 	return true
 }
 
-// OneInUint64 ... Check if at least one uint64 num in uint64 slice
+// OneInUint64s ... Check if at least one uint64 num in uint64 slice
 func OneInUint64s(l []uint64, nums ...uint64) bool {
 	checkMap := make(map[uint64]int8)
 	for _, n := range nums {
@@ -151,7 +151,7 @@ func InUint32s(l []uint32, nums ...uint32) bool {
 	return true
 }
 
-// OneInUint64 ... Check if at least one uint32 num in uint32 slice
+// OneInUint32s ... Check if at least one uint32 num in uint32 slice
 func OneInUint32s(l []uint32, nums ...uint32) bool {
 	checkMap := make(map[uint32]int8)
 	for _, n := range nums {

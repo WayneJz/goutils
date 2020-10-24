@@ -12,6 +12,16 @@ func RSortStringsByLen(l []string) {
 	sort.SliceStable(l, func(i int, j int) bool { return len(l[i]) > len(l[j]) })
 }
 
+// SortBytesByLen ... Stable sort bytes slice by length of each bytes
+func SortBytesByLen(l [][]byte) {
+	sort.SliceStable(l, func(i int, j int) bool { return len(l[i]) < len(l[j]) })
+}
+
+// RSortBytesByLen ... Reverse stable sort bytes slice by length of each bytes
+func RSortBytesByLen(l [][]byte) {
+	sort.SliceStable(l, func(i int, j int) bool { return len(l[i]) > len(l[j]) })
+}
+
 // SortInt64s ... Stable sort int64 slice
 func SortInt64s(l []int64) {
 	sort.SliceStable(l, func(i int, j int) bool { return l[i] < l[j] })
