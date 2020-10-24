@@ -33,8 +33,8 @@ func Ternary(condition bool, a, b interface{}) interface{} {
 	return b
 }
 
-// Quaternion ... Return one result of: both conditions satisfy, cond1 satisfy, cond2 satisfy, neither satisfy
-func Quaternion(condition1, condition2 bool, both, cond1, cond2, neither interface{}) interface{} {
+// Quaternary ... Return one result of: both conditions satisfy, cond1 satisfy, cond2 satisfy, neither satisfy
+func Quaternary(condition1, condition2 bool, both, cond1, cond2, neither interface{}) interface{} {
 	if condition1 && condition2 {
 		return both
 	}
@@ -47,30 +47,14 @@ func Quaternion(condition1, condition2 bool, both, cond1, cond2, neither interfa
 	return neither
 }
 
-// AnyValid ... Check if any data valid (e.g. not nil, non-zero value)
-func AnyValid(data ...interface{}) bool {
-	for _, d := range data {
-		if reflect.ValueOf(d).IsValid() {
+// HasZeroValue ... Check if any value is the zero value of its type (e.g. nil, numeric 0, empty string)
+// note: if value is invalid, it is regarded as zero
+func HasZeroValue(values ...interface{}) bool {
+	for _, v := range values {
+		if !reflect.ValueOf(v).IsValid() {
 			return true
 		}
-	}
-	return false
-}
-
-// AllValid ... Check if all data valid (e.g. not nil, non-zero value)
-func AllValid(data ...interface{}) bool {
-	for _, d := range data {
-		if !reflect.ValueOf(d).IsValid() {
-			return false
-		}
-	}
-	return true
-}
-
-// HasNilPtr ... Check if any data is a nil pointer
-func HasNilPtr(data ...interface{}) bool {
-	for _, d := range data {
-		if reflect.TypeOf(d).Kind() == reflect.Ptr && reflect.ValueOf(d).IsNil() {
+		if reflect.ValueOf(v).IsZero() {
 			return true
 		}
 	}

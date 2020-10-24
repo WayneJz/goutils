@@ -1,7 +1,10 @@
 package slice
 
 const (
-	NotFoundTag = -1 // not found
-	ToCheckTag  = 1  // indicate an element needs to check
-	FoundTag    = 2  // indicate an element is found
+	// NotFoundTag ... indicate an element is not found
+	NotFoundTag = -1
+	// toCheckTag ... indicate an element needs to check
+	toCheckTag = 1
+	// foundTag ... indicate an element is found
+	foundTag = 2
 )

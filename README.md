@@ -1,31 +1,48 @@
 # goutils [![Build Status](https://travis-ci.org/WayneJz/goutils.svg?branch=master)](https://travis-ci.org/WayneJz/goutils) [![Coverage Status](https://coveralls.io/repos/github/WayneJz/goutils/badge.svg?branch=master)](https://coveralls.io/github/WayneJz/goutils?branch=master)
-Utility Code for Golang, for better error collection, slice manipulation and orms handling
+Utility Code for Golang, for better map, slice manipulation and condition handling
 
 Require Go 1.11 or newer
 
-### slice utility
+## maps
 
-Support int32, int64, uint32, uint64, string slices
+- **JSON Map:** marshal JSON-format string(s) to map(s) in one function
 
-- Apply a function to a slice (like lambda function in other language)
+- **Merge:** merge maps together
 
-- Check if a slice contains element(s)
+- **Sequence:** extract map keys **in-order**, with corresponding values
 
-- Index element(s) in a slice
+Support int32, int64, uint32, uint64, string key maps
 
-- Merge slices together (with unique merge option)
+## slice
 
-- Stably sort or reversely sort slices
+- **Apply:** apply a function to a slice (like **lambda** function in other language)
 
-- Convert a slice to a unique slice (e.g. elements are unique)
+- **Contain:** check if a slice contains given element(s)
 
-### errors
+- **Index:** find indexes of given element(s) in a slice
 
-- An error receiver, which receives errors and output them in traceback mode
+- **Merge**: merge slices together (with unique merge option)
 
-### orms
+- **Reverse**: reverse a slice in-place
 
-- Concurrent [gorm](https://github.com/jinzhu/gorm) execution (use go routine), with timeout option
+- **Sort**: stable (reverse) sort slices, by length or numerical sequence
+
+- **Unique**: convert a slice to a unique slice (i.e. elements are unique)
+
+Support int32, int64, uint32, uint64, string, bytes slices
+
+## condition
+
+- **Any, All:** judge multiple boolean conditions in one function
+
+- **Ternary:** ternary expression
+
+- **Quaternary:** quaternary expression
+
+- **HasZeroValue:** check if any value is the zero value of its type (e.g. nil, numeric zero)
+
+- **HasNumber, HasLetter:** check if a string contains number/letter
+
 
 ## License
 

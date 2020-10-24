@@ -4,15 +4,15 @@ package slice
 func InStrings(l []string, s ...string) bool {
 	checkMap := make(map[string]int8)
 	for _, n := range s {
-		checkMap[n] = ToCheckTag
+		checkMap[n] = toCheckTag
 	}
 	for _, element := range l {
-		if checkMap[element] == ToCheckTag {
-			checkMap[element] = FoundTag
+		if checkMap[element] == toCheckTag {
+			checkMap[element] = foundTag
 		}
 	}
 	for _, n := range s {
-		if checkMap[n] != FoundTag {
+		if checkMap[n] != foundTag {
 			return false
 		}
 	}
@@ -23,7 +23,7 @@ func InStrings(l []string, s ...string) bool {
 func OneInStrings(l []string, s ...string) bool {
 	checkMap := make(map[string]int8)
 	for _, n := range s {
-		checkMap[n] = ToCheckTag
+		checkMap[n] = toCheckTag
 	}
 	for _, element := range l {
 		if _, ok := checkMap[element]; ok {
@@ -37,15 +37,15 @@ func OneInStrings(l []string, s ...string) bool {
 func InInt64s(l []int64, nums ...int64) bool {
 	checkMap := make(map[int64]int8)
 	for _, num := range nums {
-		checkMap[num] = ToCheckTag
+		checkMap[num] = toCheckTag
 	}
 	for _, element := range l {
-		if checkMap[element] == ToCheckTag {
-			checkMap[element] = FoundTag
+		if checkMap[element] == toCheckTag {
+			checkMap[element] = foundTag
 		}
 	}
 	for _, num := range nums {
-		if checkMap[num] != FoundTag {
+		if checkMap[num] != foundTag {
 			return false
 		}
 	}
@@ -56,7 +56,7 @@ func InInt64s(l []int64, nums ...int64) bool {
 func OneInInt64s(l []int64, nums ...int64) bool {
 	checkMap := make(map[int64]int8)
 	for _, n := range nums {
-		checkMap[n] = ToCheckTag
+		checkMap[n] = toCheckTag
 	}
 	for _, element := range l {
 		if _, ok := checkMap[element]; ok {
@@ -70,15 +70,15 @@ func OneInInt64s(l []int64, nums ...int64) bool {
 func InInt32s(l []int32, nums ...int32) bool {
 	checkMap := make(map[int32]int8)
 	for _, num := range nums {
-		checkMap[num] = ToCheckTag
+		checkMap[num] = toCheckTag
 	}
 	for _, element := range l {
-		if checkMap[element] == ToCheckTag {
-			checkMap[element] = FoundTag
+		if checkMap[element] == toCheckTag {
+			checkMap[element] = foundTag
 		}
 	}
 	for _, num := range nums {
-		if checkMap[num] != FoundTag {
+		if checkMap[num] != foundTag {
 			return false
 		}
 	}
@@ -89,7 +89,7 @@ func InInt32s(l []int32, nums ...int32) bool {
 func OneInInt32s(l []int32, nums ...int32) bool {
 	checkMap := make(map[int32]int8)
 	for _, n := range nums {
-		checkMap[n] = ToCheckTag
+		checkMap[n] = toCheckTag
 	}
 	for _, element := range l {
 		if _, ok := checkMap[element]; ok {
@@ -103,15 +103,15 @@ func OneInInt32s(l []int32, nums ...int32) bool {
 func InUint64s(l []uint64, nums ...uint64) bool {
 	checkMap := make(map[uint64]int8)
 	for _, num := range nums {
-		checkMap[num] = ToCheckTag
+		checkMap[num] = toCheckTag
 	}
 	for _, element := range l {
-		if checkMap[element] == ToCheckTag {
-			checkMap[element] = FoundTag
+		if checkMap[element] == toCheckTag {
+			checkMap[element] = foundTag
 		}
 	}
 	for _, num := range nums {
-		if checkMap[num] != FoundTag {
+		if checkMap[num] != foundTag {
 			return false
 		}
 	}
@@ -122,7 +122,7 @@ func InUint64s(l []uint64, nums ...uint64) bool {
 func OneInUint64s(l []uint64, nums ...uint64) bool {
 	checkMap := make(map[uint64]int8)
 	for _, n := range nums {
-		checkMap[n] = ToCheckTag
+		checkMap[n] = toCheckTag
 	}
 	for _, element := range l {
 		if _, ok := checkMap[element]; ok {
@@ -136,15 +136,15 @@ func OneInUint64s(l []uint64, nums ...uint64) bool {
 func InUint32s(l []uint32, nums ...uint32) bool {
 	checkMap := make(map[uint32]int8)
 	for _, num := range nums {
-		checkMap[num] = ToCheckTag
+		checkMap[num] = toCheckTag
 	}
 	for _, element := range l {
-		if checkMap[element] == ToCheckTag {
-			checkMap[element] = FoundTag
+		if checkMap[element] == toCheckTag {
+			checkMap[element] = foundTag
 		}
 	}
 	for _, num := range nums {
-		if checkMap[num] != FoundTag {
+		if checkMap[num] != foundTag {
 			return false
 		}
 	}
@@ -155,7 +155,7 @@ func InUint32s(l []uint32, nums ...uint32) bool {
 func OneInUint32s(l []uint32, nums ...uint32) bool {
 	checkMap := make(map[uint32]int8)
 	for _, n := range nums {
-		checkMap[n] = ToCheckTag
+		checkMap[n] = toCheckTag
 	}
 	for _, element := range l {
 		if _, ok := checkMap[element]; ok {
