@@ -3,6 +3,12 @@ Utility Code for Golang, for better map, slice manipulation and condition handli
 
 Require Go 1.13 or newer
 
+## jsonutil
+
+- **Traverse** recursively traverse json object and generate path
+
+- **TraverseBytes** is like Traverse but more efficient if use bytes
+
 ## maps
 
 - **JSON Map:** marshal JSON-format string(s) to map(s) in one function
