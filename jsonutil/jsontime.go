@@ -1,28 +1,35 @@
 package jsonutil
 
 import (
-	"bytes"
 	"database/sql/driver"
 	"fmt"
 	"time"
 )
 
-// TimeLayout common layout time format in China
-const TimeLayout = "2006-01-02 15:04:05"
+// TimeLayout a common layout time format
+const (
+	TimeLayout     = "2006-01-02 15:04:05"
+	jsonTimeLayout = "\"2006-01-02 15:04:05\""
+)
 
-// JSONTime common layout time struct format in China, support JSON and Gorm
+// JSONTime is a common layout time format, fully compatible with JSON and GORM
 type JSONTime time.Time
 
 func (t JSONTime) MarshalJSON() ([]byte, error) {
-	buf := bytes.Buffer{}
-	buf.WriteRune('"')
-	buf.WriteString(time.Time(t).Format(TimeLayout))
-	buf.WriteRune('"')
-	return buf.Bytes(), nil
+	return []byte(time.Time(t).Format(jsonTimeLayout)), nil
+}
+
+func (t *JSONTime) UnmarshalJSON(data []byte) error {
+	tm, err := time.ParseInLocation(jsonTimeLayout, string(data), time.Local)
+	if err != nil {
+		return err
+	}
+	*t = JSONTime(tm)
+	return nil
 }
 
 func (t JSONTime) Value() (driver.Value, error) {
-	if time.Time(t).UnixNano() == (time.Time{}).UnixNano() {
+	if time.Time(t).IsZero() {
 		return nil, nil
 	}
 	return time.Time(t), nil
