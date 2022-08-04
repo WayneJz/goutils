@@ -5,6 +5,8 @@ Require Go 1.13 or newer
 
 ## jsonutil
 
+- **JSONTime** a common time format, fully compatible with JSON and GORM
+
 - **Traverse** recursively traverse json object and generate path
 
 - **TraverseBytes** is like Traverse but more efficient if use bytes
