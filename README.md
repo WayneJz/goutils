@@ -11,6 +11,10 @@ Require Go 1.13 or newer
 
 - **TraverseBytes** is like Traverse but more efficient if use bytes
 
+## sqlutil
+
+- **GetMysqlErrCode** get mysql error code, if error is nil or not a mysql error, return 0. compatible with GORM
+
 ## maps
 
 - **JSON Map:** marshal JSON-format string(s) to map(s) in one function
